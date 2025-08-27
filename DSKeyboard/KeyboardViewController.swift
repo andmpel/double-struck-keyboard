@@ -86,7 +86,11 @@ struct KeyboardView: View {
     @ObservedObject var ctx: KeyboardContext
 
     var body: some View {
+<<<<<<< HEAD
         VStack(spacing: 6) {
+=======
+        VStack(spacing: 3) {
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
             switch ctx.currentMode {
             case .letters:
                 lettersLayout
@@ -96,17 +100,28 @@ struct KeyboardView: View {
                 symbolsLayout
             }
         }
+<<<<<<< HEAD
         .padding(.horizontal, 6)
         .padding(.vertical, 8)
+=======
+        .padding(.horizontal, 4)
+        .padding(.vertical, 6)
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(UIColor.systemBackground))
     }
     
     // MARK: - Letters Layout
     private var lettersLayout: some View {
+<<<<<<< HEAD
         VStack(spacing: 8) {
             // Row 1: QWERTY
             HStack(spacing: 4) {
+=======
+        VStack(spacing: 3) {
+            // Row 1: QWERTY
+            HStack(spacing: 2) {
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
                 ForEach(topRowLetters, id: \.self) { letter in
                     KeyButton(key: .char(letter), ctx: ctx) { 
                         handleKey(.char(letter))
@@ -115,18 +130,31 @@ struct KeyboardView: View {
             }
             
             // Row 2: ASDF
+<<<<<<< HEAD
             HStack(spacing: 4) {
                 Spacer(minLength: 20)
+=======
+            HStack(spacing: 2) {
+                Spacer(minLength: 15)
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
                 ForEach(middleRowLetters, id: \.self) { letter in
                     KeyButton(key: .char(letter), ctx: ctx) { 
                         handleKey(.char(letter))
                     }
                 }
+<<<<<<< HEAD
                 Spacer(minLength: 20)
             }
             
             // Row 3: ZXCV with shift and backspace
             HStack(spacing: 4) {
+=======
+                Spacer(minLength: 15)
+            }
+            
+            // Row 3: ZXCV with shift and backspace
+            HStack(spacing: 2) {
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
                 KeyButton(key: .shift, ctx: ctx, isWide: true) { 
                     handleKey(.shift)
                 }
@@ -141,7 +169,11 @@ struct KeyboardView: View {
             }
             
             // Row 4: Bottom controls
+<<<<<<< HEAD
             HStack(spacing: 4) {
+=======
+            HStack(spacing: 2) {
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
                 KeyButton(key: .numberMode, ctx: ctx) { 
                     handleKey(.numberMode)
                 }
@@ -157,9 +189,15 @@ struct KeyboardView: View {
     
     // MARK: - Numbers Layout
     private var numbersLayout: some View {
+<<<<<<< HEAD
         VStack(spacing: 8) {
             // Row 1: Numbers 1-0
             HStack(spacing: 4) {
+=======
+        VStack(spacing: 3) {
+            // Row 1: Numbers 1-0
+            HStack(spacing: 2) {
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
                 ForEach(["1","2","3","4","5","6","7","8","9","0"], id: \.self) { number in
                     KeyButton(key: .number(number), ctx: ctx) { 
                         handleKey(.number(number))
@@ -168,7 +206,11 @@ struct KeyboardView: View {
             }
             
             // Row 2: Special characters
+<<<<<<< HEAD
             HStack(spacing: 4) {
+=======
+            HStack(spacing: 2) {
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
                 ForEach(["-","/",":",";","(",")","$","&","@","\""], id: \.self) { symbol in
                     KeyButton(key: .symbol(symbol), ctx: ctx) { 
                         handleKey(.symbol(symbol))
@@ -177,7 +219,11 @@ struct KeyboardView: View {
             }
             
             // Row 3: More symbols with backspace
+<<<<<<< HEAD
             HStack(spacing: 4) {
+=======
+            HStack(spacing: 2) {
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
                 KeyButton(key: .symbolMode, ctx: ctx, isWide: true) { 
                     handleKey(.symbolMode)
                 }
@@ -192,7 +238,11 @@ struct KeyboardView: View {
             }
             
             // Row 4: Bottom controls
+<<<<<<< HEAD
             HStack(spacing: 4) {
+=======
+            HStack(spacing: 2) {
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
                 KeyButton(key: .letterMode, ctx: ctx) { 
                     handleKey(.letterMode)
                 }
@@ -208,9 +258,15 @@ struct KeyboardView: View {
     
     // MARK: - Symbols Layout
     private var symbolsLayout: some View {
+<<<<<<< HEAD
         VStack(spacing: 8) {
             // Row 1: Top symbols
             HStack(spacing: 4) {
+=======
+        VStack(spacing: 3) {
+            // Row 1: Top symbols
+            HStack(spacing: 2) {
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
                 ForEach(["[","]","{","}","#","%","^","*","+","="], id: \.self) { symbol in
                     KeyButton(key: .symbol(symbol), ctx: ctx) { 
                         handleKey(.symbol(symbol))
@@ -219,7 +275,11 @@ struct KeyboardView: View {
             }
             
             // Row 2: More symbols
+<<<<<<< HEAD
             HStack(spacing: 4) {
+=======
+            HStack(spacing: 2) {
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
                 ForEach(["_","\\","|","~","<",">","€","£","¥","•"], id: \.self) { symbol in
                     KeyButton(key: .symbol(symbol), ctx: ctx) { 
                         handleKey(.symbol(symbol))
@@ -228,7 +288,11 @@ struct KeyboardView: View {
             }
             
             // Row 3: Final symbols with backspace
+<<<<<<< HEAD
             HStack(spacing: 4) {
+=======
+            HStack(spacing: 2) {
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
                 KeyButton(key: .numberMode, ctx: ctx, isWide: true) { 
                     handleKey(.numberMode)
                 }
@@ -243,7 +307,11 @@ struct KeyboardView: View {
             }
             
             // Row 4: Bottom controls
+<<<<<<< HEAD
             HStack(spacing: 4) {
+=======
+            HStack(spacing: 2) {
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
                 KeyButton(key: .letterMode, ctx: ctx) { 
                     handleKey(.letterMode)
                 }
@@ -381,20 +449,34 @@ struct KeyButton: View {
             Text(label)
                 .font(.system(size: fontSize, weight: .medium))
                 .frame(maxWidth: keyWidth.map { _ in .infinity } ?? .infinity, 
+<<<<<<< HEAD
                        minHeight: 50)
                 .frame(width: keyWidth.map { $0 * 50 })
                 .background(backgroundColor)
                 .cornerRadius(8)
+=======
+                       minHeight: 38)
+                .frame(width: keyWidth.map { $0 * 40 })
+                .background(backgroundColor)
+                .cornerRadius(6)
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
         }
         .buttonStyle(.plain)
     }
     
     private var fontSize: CGFloat {
         switch key {
+<<<<<<< HEAD
         case .char, .number, .symbol: return 20
         case .space, .return: return 16
         case .numberMode, .symbolMode, .letterMode: return 14
         default: return 18
+=======
+        case .char, .number, .symbol: return 16
+        case .space, .return: return 14
+        case .numberMode, .symbolMode, .letterMode: return 12
+        default: return 16
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
         }
     }
 }
@@ -479,8 +561,13 @@ final class KeyboardViewController: UIInputViewController {
             hosting.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
+<<<<<<< HEAD
         // Set explicit height for the keyboard - larger for better usability
         heightConstraint = view.heightAnchor.constraint(equalToConstant: 280)
+=======
+        // Set explicit height for the keyboard - 4 rows
+        heightConstraint = view.heightAnchor.constraint(equalToConstant: 216)
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
         heightConstraint?.isActive = true
 
         self.host = hosting
@@ -495,8 +582,13 @@ final class KeyboardViewController: UIInputViewController {
         super.viewWillAppear(animated)
         
         // Ensure the keyboard has proper dimensions
+<<<<<<< HEAD
         if heightConstraint?.constant != 280 {
             heightConstraint?.constant = 280
+=======
+        if heightConstraint?.constant != 216 {
+            heightConstraint?.constant = 216
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
         }
     }
     

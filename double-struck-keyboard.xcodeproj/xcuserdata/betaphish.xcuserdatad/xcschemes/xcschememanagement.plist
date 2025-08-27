@@ -7,7 +7,11 @@
 		<key>DSKeyboard.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+<<<<<<< HEAD
 			<integer>1</integer>
+=======
+			<integer>0</integer>
+>>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
 		</dict>
 		<key>double-struck-keyboard.xcscheme_^#shared#^_</key>
 		<dict>
