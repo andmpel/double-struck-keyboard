@@ -86,271 +86,208 @@ struct KeyboardView: View {
     @ObservedObject var ctx: KeyboardContext
 
     var body: some View {
-<<<<<<< HEAD
         VStack(spacing: 6) {
-=======
-        VStack(spacing: 3) {
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
-            switch ctx.currentMode {
-            case .letters:
-                lettersLayout
-            case .numbers:
-                numbersLayout
-            case .symbols:
-                symbolsLayout
+            VStack(spacing: 3) {
+                switch ctx.currentMode {
+                case .letters:
+                    lettersLayout
+                case .numbers:
+                    numbersLayout
+                case .symbols:
+                    symbolsLayout
+                }
             }
+            .padding(.horizontal, 6)
+            .padding(.vertical, 8)
+            .padding(.horizontal, 4)
+            .padding(.vertical, 6)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(UIColor.systemBackground))
         }
-<<<<<<< HEAD
-        .padding(.horizontal, 6)
-        .padding(.vertical, 8)
-=======
-        .padding(.horizontal, 4)
-        .padding(.vertical, 6)
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(UIColor.systemBackground))
     }
-    
+
     // MARK: - Letters Layout
     private var lettersLayout: some View {
-<<<<<<< HEAD
         VStack(spacing: 8) {
             // Row 1: QWERTY
-            HStack(spacing: 4) {
-=======
-        VStack(spacing: 3) {
-            // Row 1: QWERTY
             HStack(spacing: 2) {
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
                 ForEach(topRowLetters, id: \.self) { letter in
-                    KeyButton(key: .char(letter), ctx: ctx) { 
+                    KeyButton(key: .char(letter), ctx: ctx) {
                         handleKey(.char(letter))
                     }
                 }
             }
-            
+
             // Row 2: ASDF
-<<<<<<< HEAD
-            HStack(spacing: 4) {
-                Spacer(minLength: 20)
-=======
             HStack(spacing: 2) {
                 Spacer(minLength: 15)
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
                 ForEach(middleRowLetters, id: \.self) { letter in
-                    KeyButton(key: .char(letter), ctx: ctx) { 
+                    KeyButton(key: .char(letter), ctx: ctx) {
                         handleKey(.char(letter))
                     }
                 }
-<<<<<<< HEAD
                 Spacer(minLength: 20)
             }
-            
-            // Row 3: ZXCV with shift and backspace
-            HStack(spacing: 4) {
-=======
-                Spacer(minLength: 15)
-            }
-            
+
             // Row 3: ZXCV with shift and backspace
             HStack(spacing: 2) {
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
-                KeyButton(key: .shift, ctx: ctx, isWide: true) { 
+                KeyButton(key: .shift, ctx: ctx, isWide: true) {
                     handleKey(.shift)
                 }
                 ForEach(bottomRowLetters, id: \.self) { letter in
-                    KeyButton(key: .char(letter), ctx: ctx) { 
+                    KeyButton(key: .char(letter), ctx: ctx) {
                         handleKey(.char(letter))
                     }
                 }
-                KeyButton(key: .backspace, ctx: ctx, isWide: true) { 
+                KeyButton(key: .backspace, ctx: ctx, isWide: true) {
                     handleKey(.backspace)
                 }
             }
-            
+
             // Row 4: Bottom controls
-<<<<<<< HEAD
-            HStack(spacing: 4) {
-=======
             HStack(spacing: 2) {
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
-                KeyButton(key: .numberMode, ctx: ctx) { 
+                KeyButton(key: .numberMode, ctx: ctx) {
                     handleKey(.numberMode)
                 }
-                KeyButton(key: .space, ctx: ctx, isWide: true) { 
+                KeyButton(key: .space, ctx: ctx, isWide: true) {
                     handleKey(.space)
                 }
-                KeyButton(key: .return, ctx: ctx, isWide: true) { 
+                KeyButton(key: .return, ctx: ctx, isWide: true) {
                     handleKey(.return)
                 }
             }
         }
     }
-    
+
     // MARK: - Numbers Layout
     private var numbersLayout: some View {
-<<<<<<< HEAD
         VStack(spacing: 8) {
             // Row 1: Numbers 1-0
-            HStack(spacing: 4) {
-=======
-        VStack(spacing: 3) {
-            // Row 1: Numbers 1-0
             HStack(spacing: 2) {
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
-                ForEach(["1","2","3","4","5","6","7","8","9","0"], id: \.self) { number in
-                    KeyButton(key: .number(number), ctx: ctx) { 
+                ForEach(["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"], id: \.self) { number in
+                    KeyButton(key: .number(number), ctx: ctx) {
                         handleKey(.number(number))
                     }
                 }
             }
-            
+
             // Row 2: Special characters
-<<<<<<< HEAD
-            HStack(spacing: 4) {
-=======
             HStack(spacing: 2) {
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
-                ForEach(["-","/",":",";","(",")","$","&","@","\""], id: \.self) { symbol in
-                    KeyButton(key: .symbol(symbol), ctx: ctx) { 
+                ForEach(["-", "/", ":", ";", "(", ")", "$", "&", "@", "\""], id: \.self) { symbol in
+                    KeyButton(key: .symbol(symbol), ctx: ctx) {
                         handleKey(.symbol(symbol))
                     }
                 }
             }
-            
+
             // Row 3: More symbols with backspace
-<<<<<<< HEAD
-            HStack(spacing: 4) {
-=======
             HStack(spacing: 2) {
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
-                KeyButton(key: .symbolMode, ctx: ctx, isWide: true) { 
+                KeyButton(key: .symbolMode, ctx: ctx, isWide: true) {
                     handleKey(.symbolMode)
                 }
-                ForEach([".",",","?","!","'"], id: \.self) { symbol in
-                    KeyButton(key: .symbol(symbol), ctx: ctx) { 
+                ForEach([".", ",", "?", "!", "'"], id: \.self) { symbol in
+                    KeyButton(key: .symbol(symbol), ctx: ctx) {
                         handleKey(.symbol(symbol))
                     }
                 }
-                KeyButton(key: .backspace, ctx: ctx, isWide: true) { 
+                KeyButton(key: .backspace, ctx: ctx, isWide: true) {
                     handleKey(.backspace)
                 }
             }
-            
+
             // Row 4: Bottom controls
-<<<<<<< HEAD
-            HStack(spacing: 4) {
-=======
             HStack(spacing: 2) {
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
-                KeyButton(key: .letterMode, ctx: ctx) { 
+                KeyButton(key: .letterMode, ctx: ctx) {
                     handleKey(.letterMode)
                 }
-                KeyButton(key: .space, ctx: ctx, isWide: true) { 
+                KeyButton(key: .space, ctx: ctx, isWide: true) {
                     handleKey(.space)
                 }
-                KeyButton(key: .return, ctx: ctx, isWide: true) { 
+                KeyButton(key: .return, ctx: ctx, isWide: true) {
                     handleKey(.return)
                 }
             }
-        }
-    }
-    
-    // MARK: - Symbols Layout
-    private var symbolsLayout: some View {
-<<<<<<< HEAD
-        VStack(spacing: 8) {
-            // Row 1: Top symbols
-            HStack(spacing: 4) {
-=======
-        VStack(spacing: 3) {
-            // Row 1: Top symbols
-            HStack(spacing: 2) {
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
-                ForEach(["[","]","{","}","#","%","^","*","+","="], id: \.self) { symbol in
-                    KeyButton(key: .symbol(symbol), ctx: ctx) { 
-                        handleKey(.symbol(symbol))
-                    }
-                }
-            }
-            
-            // Row 2: More symbols
-<<<<<<< HEAD
-            HStack(spacing: 4) {
-=======
-            HStack(spacing: 2) {
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
-                ForEach(["_","\\","|","~","<",">","€","£","¥","•"], id: \.self) { symbol in
-                    KeyButton(key: .symbol(symbol), ctx: ctx) { 
-                        handleKey(.symbol(symbol))
-                    }
-                }
-            }
-            
-            // Row 3: Final symbols with backspace
-<<<<<<< HEAD
-            HStack(spacing: 4) {
-=======
-            HStack(spacing: 2) {
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
-                KeyButton(key: .numberMode, ctx: ctx, isWide: true) { 
-                    handleKey(.numberMode)
-                }
-                ForEach([".",",","?","!","'"], id: \.self) { symbol in
-                    KeyButton(key: .symbol(symbol), ctx: ctx) { 
-                        handleKey(.symbol(symbol))
-                    }
-                }
-                KeyButton(key: .backspace, ctx: ctx, isWide: true) { 
-                    handleKey(.backspace)
-                }
-            }
-            
-            // Row 4: Bottom controls
-<<<<<<< HEAD
-            HStack(spacing: 4) {
-=======
-            HStack(spacing: 2) {
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
-                KeyButton(key: .letterMode, ctx: ctx) { 
-                    handleKey(.letterMode)
-                }
-                KeyButton(key: .space, ctx: ctx, isWide: true) { 
-                    handleKey(.space)
-                }
-                KeyButton(key: .return, ctx: ctx, isWide: true) { 
-                    handleKey(.return)
-                }
-            }
-        }
-    }
-    
-    // MARK: - Letter arrays based on shift state
-    private var topRowLetters: [String] {
-        if ctx.isShifted {
-            return ["Q","W","E","R","T","Y","U","I","O","P"]
-        } else {
-            return ["q","w","e","r","t","y","u","i","o","p"]
-        }
-    }
-    
-    private var middleRowLetters: [String] {
-        if ctx.isShifted {
-            return ["A","S","D","F","G","H","J","K","L"]
-        } else {
-            return ["a","s","d","f","g","h","j","k","l"]
-        }
-    }
-    
-    private var bottomRowLetters: [String] {
-        if ctx.isShifted {
-            return ["Z","X","C","V","B","N","M"]
-        } else {
-            return ["z","x","c","v","b","n","m"]
         }
     }
 
-    private func handleKey(_ key: Key) {
+    // MARK: - Symbols Layout
+    private var symbolsLayout: some View {
+        VStack(spacing: 8) {
+            // Row 1: Top symbols
+            HStack(spacing: 2) {
+                ForEach(["[", "]", "{", "}", "#", "%", "^", "*", "+", "="], id: \.self) { symbol in
+                    KeyButton(key: .symbol(symbol), ctx: ctx) {
+                        handleKey(.symbol(symbol))
+                    }
+                }
+            }
+
+            // Row 2: More symbols
+            HStack(spacing: 2) {
+                ForEach(["_", "\\", "|", "~", "<", ">", "€", "£", "¥", "•"], id: \.self) { symbol in
+                    KeyButton(key: .symbol(symbol), ctx: ctx) {
+                        handleKey(.symbol(symbol))
+                    }
+                }
+            }
+
+            // Row 3: Final symbols with backspace
+            HStack(spacing: 2) {
+                KeyButton(key: .numberMode, ctx: ctx, isWide: true) {
+                    handleKey(.numberMode)
+                }
+                ForEach([".", ",", "?", "!", "'"], id: \.self) { symbol in
+                    KeyButton(key: .symbol(symbol), ctx: ctx) {
+                        handleKey(.symbol(symbol))
+                    }
+                }
+                KeyButton(key: .backspace, ctx: ctx, isWide: true) {
+                    handleKey(.backspace)
+                }
+            }
+
+            // Row 4: Bottom controls
+            HStack(spacing: 2) {
+                KeyButton(key: .letterMode, ctx: ctx) {
+                    handleKey(.letterMode)
+                }
+                KeyButton(key: .space, ctx: ctx, isWide: true) {
+                    handleKey(.space)
+                }
+                KeyButton(key: .return, ctx: ctx, isWide: true) {
+                    handleKey(.return)
+                }
+            }
+        }
+    }
+
+    // MARK: - Letter arrays based on shift state
+    private var topRowLetters: [String] {
+        if ctx.isShifted {
+            return ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
+        } else {
+            return ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"]
+        }
+    }
+
+    private var middleRowLetters: [String] {
+        if ctx.isShifted {
+            return ["A", "S", "D", "F", "G", "H", "J", "K", "L"]
+        } else {
+            return ["a", "s", "d", "f", "g", "h", "j", "k", "l"]
+        }
+    }
+
+    private var bottomRowLetters: [String] {
+        if ctx.isShifted {
+            return ["Z", "X", "C", "V", "B", "N", "M"]
+        } else {
+            return ["z", "x", "c", "v", "b", "n", "m"]
+        }
+    }
+
+    // MARK: - Handle Key Presses
+    func handleKey(_ key: Key) {
         print("🔥 Key tapped: \(key)")
         switch key {
         case .char(let s):
@@ -387,12 +324,13 @@ struct KeyboardView: View {
     }
 }
 
+// MARK: - Key Button View
 struct KeyButton: View {
     let key: Key
     let ctx: KeyboardContext
     let isWide: Bool
     let action: () -> Void
-    
+
     init(key: Key, ctx: KeyboardContext, isWide: Bool = false, action: @escaping () -> Void) {
         self.key = key
         self.ctx = ctx
@@ -410,23 +348,29 @@ struct KeyButton: View {
         case .return: return "return"
         case .shift: return ctx.isCapsLock ? "⇪" : (ctx.isShifted ? "⇧" : "⇧")
         case .numberMode: return "123"
-        case .symbolMode: return "#+=" 
+        case .symbolMode: return "#+="
         case .letterMode: return "ABC"
         }
     }
-    
+
     var keyWidth: CGFloat? {
         if isWide {
             switch key {
             case .shift, .backspace: return 1.5
-            case .space: return 4.0  // Make space even wider since we removed other buttons
+            case .space: return 5.0  // Changed from 4.0 to 5.0 for wider space bar
             case .return: return 2.0
             default: return nil
             }
+        } else {
+            switch key {
+            case .numberMode, .symbolMode, .letterMode:
+                return 0.7  // Narrower mode-switch keys
+            default:
+                return nil
+            }
         }
-        return nil
     }
-    
+
     var backgroundColor: Color {
         switch key {
         case .shift:
@@ -448,35 +392,19 @@ struct KeyButton: View {
         Button(action: action) {
             Text(label)
                 .font(.system(size: fontSize, weight: .medium))
-                .frame(maxWidth: keyWidth.map { _ in .infinity } ?? .infinity, 
-<<<<<<< HEAD
-                       minHeight: 50)
-                .frame(width: keyWidth.map { $0 * 50 })
-                .background(backgroundColor)
-                .cornerRadius(8)
-=======
-                       minHeight: 38)
-                .frame(width: keyWidth.map { $0 * 40 })
+                .frame(minWidth: keyWidth.map { $0 * 40 }, maxWidth: keyWidth.map { $0 * 40 } ?? .infinity, minHeight: 38)
                 .background(backgroundColor)
                 .cornerRadius(6)
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
         }
         .buttonStyle(.plain)
     }
-    
+
     private var fontSize: CGFloat {
         switch key {
-<<<<<<< HEAD
-        case .char, .number, .symbol: return 20
-        case .space, .return: return 16
-        case .numberMode, .symbolMode, .letterMode: return 14
-        default: return 18
-=======
         case .char, .number, .symbol: return 16
         case .space, .return: return 14
         case .numberMode, .symbolMode, .letterMode: return 12
         default: return 16
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
         }
     }
 }
@@ -486,7 +414,7 @@ final class KeyboardContext: ObservableObject {
     @Published var isShifted = false
     @Published var isCapsLock = false
     @Published var currentMode: KeyboardMode = .letters
-    
+
     let textDocumentProxy: UITextDocumentProxy
     private var shiftTapCount = 0
     private var lastShiftTap: Date = Date()
@@ -494,19 +422,19 @@ final class KeyboardContext: ObservableObject {
     init(proxy: UITextDocumentProxy) {
         self.textDocumentProxy = proxy
     }
-    
+
     func handleShift() {
         let now = Date()
         let timeSinceLastTap = now.timeIntervalSince(lastShiftTap)
-        
+
         // Reset tap count if too much time has passed
         if timeSinceLastTap > 0.3 {
             shiftTapCount = 0
         }
-        
+
         shiftTapCount += 1
         lastShiftTap = now
-        
+
         if shiftTapCount >= 2 {
             // Double tap = caps lock toggle
             isCapsLock.toggle()
@@ -525,29 +453,28 @@ final class KeyboardContext: ObservableObject {
 final class KeyboardViewController: UIInputViewController {
     private var host: UIHostingController<KeyboardView>?
     private var ctx: KeyboardContext!
-    private var heightConstraint: NSLayoutConstraint?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print("🎹 KeyboardViewController viewDidLoad called")
         setupKeyboard()
     }
-    
+
     private func setupKeyboard() {
         print("🔄 Setting up keyboard...")
         setupSwiftUIKeyboard()
     }
-    
+
     private func setupSwiftUIKeyboard() {
         ctx = KeyboardContext(proxy: textDocumentProxy)
 
         let rootView = KeyboardView(ctx: ctx)
         let hosting = UIHostingController(rootView: rootView)
-        
+
         // Configure the hosting controller
         hosting.view.translatesAutoresizingMaskIntoConstraints = false
         hosting.view.backgroundColor = .clear
-        
+
         // Add as child view controller
         addChild(hosting)
         view.addSubview(hosting.view)
@@ -560,41 +487,22 @@ final class KeyboardViewController: UIInputViewController {
             hosting.view.topAnchor.constraint(equalTo: view.topAnchor),
             hosting.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
-<<<<<<< HEAD
-        // Set explicit height for the keyboard - larger for better usability
-        heightConstraint = view.heightAnchor.constraint(equalToConstant: 280)
-=======
-        // Set explicit height for the keyboard - 4 rows
-        heightConstraint = view.heightAnchor.constraint(equalToConstant: 216)
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
-        heightConstraint?.isActive = true
 
         self.host = hosting
-        
+
         // Configure view appearance
         view.backgroundColor = UIColor.systemBackground
         print("✅ SwiftUI keyboard setup complete")
     }
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // Ensure the keyboard has proper dimensions
-<<<<<<< HEAD
-        if heightConstraint?.constant != 280 {
-            heightConstraint?.constant = 280
-=======
-        if heightConstraint?.constant != 216 {
-            heightConstraint?.constant = 216
->>>>>>> 370d4a590cbaae23d4750ca852f622015794d984
-        }
+        // Removed heightConstraint adjustments to allow keyboard to fill available space
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         // Force a layout pass to ensure everything is visible
         view.setNeedsLayout()
         view.layoutIfNeeded()
@@ -602,15 +510,15 @@ final class KeyboardViewController: UIInputViewController {
 
     override func textDidChange(_ textInput: UITextInput?) {
         super.textDidChange(textInput)
-        
+
         // Update appearance based on keyboard appearance
         let isDark = textDocumentProxy.keyboardAppearance == .dark
         view.backgroundColor = isDark ? UIColor.systemBackground : UIColor.systemBackground
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        
+
         coordinator.animate(alongsideTransition: { _ in
             // Handle orientation changes if needed
         }, completion: nil)

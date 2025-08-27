@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var input = "Hello World 123"
+    @State private var input = ""
     
     var body: some View {
         NavigationView {
@@ -20,15 +20,17 @@ struct ContentView: View {
                 Text("Input")
                     .font(.headline)
                 TextEditor(text: $input)
-                    .frame(minHeight: 120)
+                    .frame( maxWidth: .infinity,minHeight: 120)
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(.secondary))
                 
                 Text("Output")
                     .font(.headline)
                 Text(DoubleStruckMapper.map(input))
-                    .frame(minHeight: 120, alignment: .topLeading)
-                    .padding(8)
+                    .frame( maxWidth: .infinity, minHeight: 120, alignment: .topLeading)
+                    .padding(4)
+                    .background(Color(.systemBackground))
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(.secondary))
+                    .font(.body)
                     .textSelection(.enabled)
                 
                 Text("To use the keyboard:")
