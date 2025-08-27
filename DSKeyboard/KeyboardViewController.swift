@@ -102,8 +102,11 @@ struct KeyboardView: View {
             .padding(.horizontal, 4)
             .padding(.vertical, 6)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(UIColor.systemBackground))
+            .background(Color.clear)
         }
+        .frame(maxHeight: .infinity)
+        .background(Color.clear)
+        .edgesIgnoringSafeArea(.all)
     }
 
     // MARK: - Letters Layout
@@ -357,14 +360,14 @@ struct KeyButton: View {
         if isWide {
             switch key {
             case .shift, .backspace: return 1.5
-            case .space: return 5.0  // Changed from 4.0 to 5.0 for wider space bar
+            case .space: return 6.0  // Changed from 4.0 to 5.0 for wider space bar
             case .return: return 2.0
             default: return nil
             }
         } else {
             switch key {
             case .numberMode, .symbolMode, .letterMode:
-                return 0.7  // Narrower mode-switch keys
+                return 1.5  // Narrower mode-switch keys
             default:
                 return nil
             }
@@ -491,7 +494,7 @@ final class KeyboardViewController: UIInputViewController {
         self.host = hosting
 
         // Configure view appearance
-        view.backgroundColor = UIColor.systemBackground
+        view.backgroundColor = .clear
         print("✅ SwiftUI keyboard setup complete")
     }
 
@@ -512,8 +515,8 @@ final class KeyboardViewController: UIInputViewController {
         super.textDidChange(textInput)
 
         // Update appearance based on keyboard appearance
-        let isDark = textDocumentProxy.keyboardAppearance == .dark
-        view.backgroundColor = isDark ? UIColor.systemBackground : UIColor.systemBackground
+        // For transparency, always keep clear background
+        view.backgroundColor = .clear
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -524,3 +527,4 @@ final class KeyboardViewController: UIInputViewController {
         }, completion: nil)
     }
 }
+
